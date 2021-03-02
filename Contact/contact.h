@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 struct contact
 {
@@ -11,13 +12,21 @@ struct contact
 	char sex[8];
 	int age;
 	char ID[12];
-	struct contact* p;
 };
 
+struct NumofCon
+{
+	int Num;
+	struct contact p[];
+};
 
-struct contact* contact_add(struct contact* addr);
-void contact_find(struct contact* addr);
-void contact_Delete(struct contact* addr);
+struct NumofCon* Contact_Init(void);
+struct NumofCon* contact_add(struct NumofCon* ps);
+void contact_find(struct NumofCon* addr);
+void contact_Printall(struct NumofCon* ps);
+struct NumofCon* contact_delete(struct NumofCon* ps);
+void contact_serve(struct NumofCon* ps);
+struct NumofCon* Contact_read(struct NumofCon* ps);
 
 #endif
 
